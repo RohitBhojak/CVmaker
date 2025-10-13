@@ -1,8 +1,8 @@
-export default function Github({ className }) {
+export default function Github({ className, height = 50, width = 50 }) {
   return (
     <svg
-      width="50"
-      height="50"
+      width={width}
+      height={height}
       viewBox="0 0 20 20"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"

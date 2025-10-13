@@ -1,10 +1,10 @@
-export default function Logo({ className }) {
+export default function Logo({ className, height = 50, width = 50 }) {
   return (
     <svg
       viewBox="0 0 20 20"
       className={`fill-current stroke-current ${className || ""}`}
-      width="60"
-      height="60"
+      width={width}
+      height={height}
     >
       <g fill="none">
         <path d="M6.5 12.5a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7Zm0 2.5a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7Z" />
