@@ -17,14 +17,14 @@ const example = {
       Relevant Coursework: Data Structures and Algorithms, Object Oriented Programming, Operating Systems, Computer Networks, Database Management Systems",
     },
     {
-      school: "Angels Public School",
+      school: "Angels Public School, CBSE",
       degree: "Intermediate",
       startDate: "2020",
       endDate: "2021",
       description: "Percentage: 95.0%",
     },
     {
-      school: "Angels Public School",
+      school: "Angels Public School, CBSE",
       degree: "High School",
       startDate: "2018",
       endDate: "2019",
