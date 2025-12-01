@@ -9,7 +9,7 @@ export default function Main() {
     skills: [],
   });
   return (
-    <main className=" h-screen p-5 lg:grid lg:grid-cols-2 lg:gap-5 ">
+    <main className=" p-5 lg:grid lg:grid-cols-2 lg:gap-5 ">
       <UserInfo resume={resume} setResume={setResume}></UserInfo>
       <Preview resume={resume}></Preview>
     </main>
