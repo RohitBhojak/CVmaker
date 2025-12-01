@@ -7,27 +7,25 @@ const example = {
   },
   education: [
     {
-      school: "Galgotias College of Engineering and Technology, AKTU",
-      degree: "Bachelor of Technology in Computer Science and Design",
+      school: "GCET, AKTU",
+      degree: "B.Tech, Computer Science and Design",
       startDate: "2022",
       endDate: "2026",
-      description:
-        "CGPA: 8.04\n\
-      Relevant Coursework: Data Structures and Algorithms, Object Oriented Programming, Operating Systems, Computer Networks, Database Management Systems",
+      marks: "8.04",
     },
     {
-      school: "Angels Public School, CBSE",
+      school: "CBSE",
       degree: "Intermediate",
       startDate: "2020",
       endDate: "2021",
-      description: "Percentage: 95.0%",
+      marks: "95.0%",
     },
     {
-      school: "Angels Public School, CBSE",
+      school: "CBSE",
       degree: "High School",
       startDate: "2018",
       endDate: "2019",
-      description: "Percentage: 95.2%",
+      marks: "95.2%",
     },
   ],
   projects: [
