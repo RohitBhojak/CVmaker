@@ -1,3 +1,4 @@
+import Link from "./Link";
 export default function PersonalPreview({ personal }) {
   return (
     <div className="flex flex-col justify-center items-center">
@@ -7,9 +8,11 @@ export default function PersonalPreview({ personal }) {
         {personal.links.map((link) => (
           <>
             <Divider />
-            <a href={"https://" + link} target={"_blank"}>
-              {link}
-            </a>
+            <Link
+              title={link}
+              href={"https://" + link}
+              target={"_blank"}
+            ></Link>
           </>
         ))}
       </div>
