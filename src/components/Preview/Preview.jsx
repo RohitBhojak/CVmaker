@@ -1,6 +1,7 @@
 import PersonalPreview from "./PersonalPreview";
 import EducationPreview from "./EducationPreview";
 import ProjectsPreview from "./ProjectsPreview";
+import SkillsPreview from "./SkillsPreview";
 import { usePDF } from "react-to-pdf";
 
 export default function Preview({ resume }) {
@@ -14,7 +15,7 @@ export default function Preview({ resume }) {
         <PersonalPreview personal={resume.personal}></PersonalPreview>
         <EducationPreview education={resume.education}></EducationPreview>
         <ProjectsPreview projects={resume.projects}></ProjectsPreview>
-        {/* <SkillsPreview skills={resume.skills}></SkillsPreview> */}
+        <SkillsPreview skills={resume.skills}></SkillsPreview>
         {/* <ExtrasPreview extras={resume.extras}></ExtrasPreview> */}
       </div>
       <button
