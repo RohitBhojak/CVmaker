@@ -1,4 +1,5 @@
 import Link from "./Link";
+import { Fragment } from "react";
 export default function PersonalPreview({ personal }) {
   return (
     <div className="flex flex-col justify-center items-center">
@@ -6,14 +7,14 @@ export default function PersonalPreview({ personal }) {
       <div className="flex flex-wrap justify-center gap-2">
         <span>{personal.email}</span> <Divider /> <span>{personal.phone}</span>
         {personal.links.map((link) => (
-          <>
+          <Fragment key={link}>
             <Divider />
             <Link
               title={link}
               href={"https://" + link}
               target={"_blank"}
             ></Link>
-          </>
+          </Fragment>
         ))}
       </div>
     </div>
