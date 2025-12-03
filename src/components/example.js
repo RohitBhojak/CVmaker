@@ -61,18 +61,20 @@ const example = {
       description: "HTML, CSS, React, Tailwind, Git, Bash, Webpack, Jest",
     },
   ],
-  extras: [
+  achievements:
+    "Solved 650+ problems on LeetCode across data structures and algorithms.\n\
+  Achieved a LeetCode Rating of 1700+, ranked in the top 10% globally.\n\
+  Secured a highest contest rank of 1888 in LeetCode Weekly/Global contests.",
+  experience: [
     {
-      heading: "Open Source Contributions",
-      content: [
-        {
-          title: "openSUSE",
-          description:
-            "Contributed to openSUSE’s Uyuni project by resolving SonarCloud-reported issues in legacy Java code.\n\
-      Improved code quality by refactoring outdated patterns and applying modern Java best practices.\n\
-      Maintained a clean Git history by rebasing and squashing commits as per open source standards.",
-        },
-      ],
+      title: "Frontend Developer Intern",
+      company: "Consint Solutions Private Limited",
+      startDate: "May 2023",
+      endDate: "Present",
+      description:
+        "Working on a React codebase for a large-scale health insurance web platform under development.\n\
+      Resolve UI/UX issues and functional bugs reported by testers and clients, improving usability and reliability.\n\
+      Refactor existing components to make them more maintainable, extensible, and efficient.",
     },
   ],
 };
