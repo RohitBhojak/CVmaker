@@ -24,9 +24,9 @@ function ExperienceDetails({
     <div className="mb-2">
       <div className="flex justify-between">
         <h3 className="font-bold">{title}</h3>
-        <span>
+        <Italics>
           {startDate} - {endDate}
-        </span>
+        </Italics>
       </div>
       <Italics>{company}</Italics>
       <Bullets description={description}></Bullets>
