@@ -69,7 +69,7 @@ const example = {
     {
       title: "Frontend Developer Intern",
       company: "Consint Solutions Private Limited",
-      startDate: "May 2023",
+      startDate: "Nov 2025",
       endDate: "Present",
       description:
         "Working on a React codebase for a large-scale health insurance web platform under development.\n\

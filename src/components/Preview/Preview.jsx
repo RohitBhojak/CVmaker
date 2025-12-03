@@ -3,6 +3,7 @@ import EducationPreview from "./EducationPreview";
 import ProjectsPreview from "./ProjectsPreview";
 import SkillsPreview from "./SkillsPreview";
 import AchievementsPreview from "./AchievementsPreview";
+import ExperiencePreview from "./ExperiencePreview";
 import { usePDF } from "react-to-pdf";
 
 export default function Preview({ resume }) {
