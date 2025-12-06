@@ -14,7 +14,7 @@ export default function Preview({ resume }) {
         ref={targetRef}
         className="flex flex-col gap-5 first-line:grow bg-gray-50 rounded-lg shadow-md p-5 mb-4"
       >
-        {resume.personal && (
+        {Object.keys(resume.personal).length > 0 && (
           <PersonalPreview personal={resume.personal}></PersonalPreview>
         )}
         {resume.education.length > 0 && (
