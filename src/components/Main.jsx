@@ -8,11 +8,14 @@ export default function Main() {
     education: [],
     projects: [],
     skills: [],
+    experience: [],
+    achievements: [],
   });
+  console.log(resume);
   return (
     <main className=" p-5 lg:grid lg:grid-cols-2 lg:gap-5 ">
       <UserInfo resume={resume} setResume={setResume}></UserInfo>
-      <Preview resume={example}></Preview>
+      <Preview resume={resume}></Preview>
     </main>
   );
 }
