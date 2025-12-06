@@ -3,7 +3,7 @@ import Personal from "./Personal.jsx";
 export default function UserInfo({ resume, setResume }) {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <div className="grow">
+    <div className="grow overflow-y-auto">
       <Personal
         resume={resume}
         setResume={setResume}
@@ -13,7 +13,8 @@ export default function UserInfo({ resume, setResume }) {
       {/* <Education></Education>
       <Projects></Projects>
       <Skills></Skills>
-      <WorkExperience></WorkExperience> */}
+      <WorkExperience></WorkExperience> 
+      <Achievements></Achievements>*/}
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import UserInfo from "./UserInfo.jsx";
 import Preview from "./Preview/Preview.jsx";
+import UserInfo from "./UserDetails/UserInfo.jsx";
 import { useImmer } from "use-immer";
 import example from "./example.js";
 export default function Main() {
