@@ -5,6 +5,7 @@ import SkillsPreview from "./SkillsPreview";
 import AchievementsPreview from "./AchievementsPreview";
 import ExperiencePreview from "./ExperiencePreview";
 import { usePDF } from "react-to-pdf";
+import { Download } from "lucide-react";
 import Button from "../Button";
 
 export default function Preview({ resume }) {
@@ -36,7 +37,9 @@ export default function Preview({ resume }) {
           ></AchievementsPreview>
         )}
       </div>
-      <Button onClick={() => toPDF()}>Download</Button>
+      <Button onClick={() => toPDF()}>
+        <Download /> Download
+      </Button>
     </div>
   );
 }

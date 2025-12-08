@@ -1,8 +1,11 @@
+import ErrorMessage from "./ErrorMessage";
+
 export default function InputField({
   label,
   type,
   id,
   isRequired,
+  isEdit,
   value,
   setValue,
 }) {
@@ -11,7 +14,11 @@ export default function InputField({
       <label htmlFor={id} className="text-lg">
         {label} {isRequired && <span className="text-red-500">*</span>}
       </label>
-      <CustomInput type={type} id={id} value={value} setValue={setValue} />
+      {isEdit ? (
+        <CustomInput type={type} id={id} value={value} setValue={setValue} />
+      ) : (
+        <p>{value}</p>
+      )}
     </div>
   );
 }
