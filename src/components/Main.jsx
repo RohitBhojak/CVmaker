@@ -13,7 +13,7 @@ export default function Main() {
   });
   console.log(resume);
   return (
-    <main className=" p-5 lg:grid lg:grid-cols-2 lg:gap-5 ">
+    <main className=" p-5 grid lg:grid-cols-2 gap-5 ">
       <UserInfo resume={resume} setResume={setResume}></UserInfo>
       <Preview resume={resume}></Preview>
     </main>
