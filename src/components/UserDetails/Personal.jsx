@@ -1,17 +1,16 @@
 import InputField from "./InputField";
 import Dropdown from "./Dropdown";
 import { useState } from "react";
-import FormHeading from "./FormHeading";
 import Button from "../Button";
 import { useImmer } from "use-immer";
 import { Trash2, SquarePen } from "lucide-react";
-import { v4 as uuidv4 } from "uuid";
+import { v4 } from "uuid";
 
-export default function Personal({ resume, setResume, isActive, onClick }) {
+export default function Personal({ setResume, isActive, onClick, onClose }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [links, setLinks] = useImmer([{ id: uuidv4(), value: "" }]);
+  const [links, setLinks] = useImmer([{ id: v4(), value: "" }]);
   const [isEdit, setIsEdit] = useState(true);
 
   const submit = (e) => {
@@ -34,7 +33,7 @@ export default function Personal({ resume, setResume, isActive, onClick }) {
 
   const addLink = () => {
     setLinks((draft) => {
-      draft.push({ id: uuidv4(), value: "" });
+      draft.push({ id: v4(), value: "" });
     });
   };
 
@@ -45,8 +44,12 @@ export default function Personal({ resume, setResume, isActive, onClick }) {
   };
 
   return (
-    <Dropdown>
-      <FormHeading>Personal Details</FormHeading>
+    <Dropdown
+      onClick={onClick}
+      onClose={onClose}
+      isActive={isActive}
+      heading={"Personal Details"}
+    >
       <form>
         <InputField
           label="Name"
