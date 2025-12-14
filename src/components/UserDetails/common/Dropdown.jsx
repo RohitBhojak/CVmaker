@@ -1,4 +1,4 @@
-import ArrowButton from "../ArrowButton";
+import ArrowButton from "./ArrowButton";
 import FormHeading from "./FormHeading";
 
 export default function Dropdown({

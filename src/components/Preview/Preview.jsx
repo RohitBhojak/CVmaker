@@ -6,7 +6,7 @@ import AchievementsPreview from "./AchievementsPreview";
 import ExperiencePreview from "./ExperiencePreview";
 import { usePDF } from "react-to-pdf";
 import { Download } from "lucide-react";
-import Button from "../Button";
+import Button from "../common/Button";
 
 export default function Preview({ resume }) {
   const { toPDF, targetRef } = usePDF();

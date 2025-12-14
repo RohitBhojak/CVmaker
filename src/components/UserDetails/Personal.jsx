@@ -1,12 +1,12 @@
-import InputField from "./InputField";
-import Dropdown from "./Dropdown";
+import InputField from "./common/InputField";
+import Dropdown from "./common/Dropdown";
 import { useState } from "react";
-import Button from "../Button";
+import Button from "../common/Button";
 import { useImmer } from "use-immer";
 import { Trash2, SquarePen } from "lucide-react";
 import { v4 } from "uuid";
 
-export default function Personal({ setResume, isActive, onClick, onClose }) {
+const Personal = ({ setResume, isActive, onClick, onClose }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -131,4 +131,6 @@ export default function Personal({ setResume, isActive, onClick, onClose }) {
       </form>
     </Dropdown>
   );
-}
+};
+
+export default Personal;

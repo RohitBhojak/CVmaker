@@ -1,6 +1,6 @@
-import Link from "./Link";
-import Subheading from "./Subheading";
-import Bullets from "./Bullets";
+import Link from "./common/Link";
+import Subheading from "./common/Subheading";
+import Bullets from "./common/Bullets";
 
 export default function ProjectsPreview({ projects }) {
   return (

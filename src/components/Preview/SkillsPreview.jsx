@@ -1,4 +1,4 @@
-import Subheading from "./Subheading";
+import Subheading from "./common/Subheading";
 export default function SkillsPreview({ skills }) {
   return (
     <div>

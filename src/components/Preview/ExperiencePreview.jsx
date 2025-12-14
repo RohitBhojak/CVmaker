@@ -1,6 +1,6 @@
-import Italics from "./Italics";
-import Subheading from "./Subheading";
-import Bullets from "./Bullets";
+import Italics from "./common/Italics";
+import Subheading from "./common/Subheading";
+import Bullets from "./common/Bullets";
 
 export default function ExperiencePreview({ experience }) {
   return (

@@ -1,5 +1,5 @@
-import Subheading from "./Subheading";
-import Italics from "./Italics";
+import Subheading from "./common/Subheading";
+import Italics from "./common/Italics";
 export default function EducationPreview({ education }) {
   return (
     <div>

@@ -2,8 +2,8 @@ import { useState } from "react";
 import Dropdown from "./common/Dropdown";
 import { v4 } from "uuid";
 
-const Education = ({ setResume, isActive, onClick, onClose }) => {
-  const [education, setEducation] = useState([
+const Projects = ({ setResume, isActive, onClick, onClose }) => {
+  const [projects, setProjects] = useState([
     {
       id: v4(),
       school: "",
@@ -15,7 +15,7 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
   ]);
   return (
     <Dropdown
-      heading={"Education Details"}
+      heading={"Projects Details"}
       onClick={onClick}
       onClose={onClose}
       isActive={isActive}
@@ -23,4 +23,4 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
   );
 };
 
-export default Education;
+export default Projects;

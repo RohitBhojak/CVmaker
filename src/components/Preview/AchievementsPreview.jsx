@@ -1,5 +1,5 @@
-import Subheading from "./Subheading";
-import Bullets from "./Bullets";
+import Subheading from "./common/Subheading";
+import Bullets from "./common/Bullets";
 export default function AchievementsPreview({ achievements }) {
   return (
     <div>
