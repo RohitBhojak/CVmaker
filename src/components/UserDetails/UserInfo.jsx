@@ -9,7 +9,7 @@ export default function UserInfo({ setResume }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const onClose = () => setActiveIndex(-1);
   return (
-    <div className="grow overflow-y-auto flex flex-col gap-4">
+    <div className="lg:overflow-y-auto flex flex-col gap-4 h-full">
       <Personal
         setResume={setResume}
         isActive={activeIndex === 0}
