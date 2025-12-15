@@ -82,6 +82,63 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
                     })
                   }
                 ></InputField>
+
+                <InputField
+                  label="Degree"
+                  type="text"
+                  id="degree"
+                  isRequired
+                  isEdit={isEdit}
+                  value={edu.degree}
+                  setValue={(value) =>
+                    setEducation((draft) => {
+                      draft[index].degree = value;
+                    })
+                  }
+                ></InputField>
+                <div className="flex gap-2">
+                  <InputField
+                    label="Start Date"
+                    type="month"
+                    id="startDate"
+                    isRequired
+                    isEdit={isEdit}
+                    value={edu.startDate}
+                    setValue={(value) =>
+                      setEducation((draft) => {
+                        draft[index].startDate = value;
+                      })
+                    }
+                  ></InputField>
+
+                  <InputField
+                    label="End Date"
+                    type="month"
+                    id="endDate"
+                    isRequired
+                    isEdit={isEdit}
+                    value={edu.endDate}
+                    setValue={(value) =>
+                      setEducation((draft) => {
+                        draft[index].endDate = value;
+                      })
+                    }
+                  ></InputField>
+                </div>
+
+                <InputField
+                  label="Marks"
+                  type="text"
+                  id="marks"
+                  isRequired
+                  isEdit={isEdit}
+                  value={edu.marks}
+                  setValue={(value) =>
+                    setEducation((draft) => {
+                      draft[index].marks = value;
+                    })
+                  }
+                ></InputField>
               </div>
             </div>
           );

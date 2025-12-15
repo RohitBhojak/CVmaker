@@ -1,5 +1,6 @@
 import Subheading from "./common/Subheading";
 import Italics from "./common/Italics";
+import dayjs from "dayjs";
 export default function EducationPreview({ education }) {
   return (
     <div>
@@ -18,8 +19,12 @@ function EducationDetails({ school, degree, startDate, endDate, marks }) {
         {degree}, {school}: <strong>{marks}</strong>
       </h3>
       <Italics>
-        {startDate} - {endDate}
+        {format(startDate)} - {format(endDate)}
       </Italics>
     </div>
   );
+}
+
+function format(date) {
+  return dayjs(date).format("MMM YYYY");
 }
