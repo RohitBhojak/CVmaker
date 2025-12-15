@@ -2,6 +2,8 @@ import InputField from "./common/InputField";
 import Dropdown from "./common/Dropdown";
 import { useState } from "react";
 import Button from "../common/Button";
+import DeleteButton from "./common/DeleteButton";
+import AddButton from "./common/AddButton";
 import { useImmer } from "use-immer";
 import { Trash2, SquarePen } from "lucide-react";
 import { v4 } from "uuid";
@@ -82,7 +84,7 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
         {links.map((link, index) => {
           return (
             <div key={link.id} className="flex items-end gap-2">
-              <div className="flex-grow">
+              <div className="grow">
                 <InputField
                   label={`Link ${index + 1}`}
                   type="url"
@@ -98,28 +100,12 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
                 />
               </div>
 
-              {isEdit && (
-                <Button
-                  type="button"
-                  onClick={() => deleteLink(index)}
-                  className="bg-transparent hover:bg-red-100 text-slate-400 hover:!text-red-600 dark:hover:bg-red-900/30 dark:hover:!text-red-400 !p-2 !w-auto mb-3 self-end shadow-none"
-                >
-                  <Trash2 size={20} />
-                </Button>
-              )}
+              {isEdit && <DeleteButton onClick={() => deleteLink(index)} />}
             </div>
           );
         })}
 
-        {isEdit && (
-          <Button
-            type="button"
-            onClick={addLink}
-            className="bg-transparent border border-purple-600 !text-purple-600 hover:bg-purple-100 dark:border-purple-400 dark:!text-purple-400 dark:hover:bg-slate-900"
-          >
-            + Add Link
-          </Button>
-        )}
+        {isEdit && <AddButton onClick={addLink}>+ Add Link</AddButton>}
 
         {isEdit ? (
           <Button onClick={submit}>Submit</Button>
