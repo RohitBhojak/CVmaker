@@ -3,6 +3,10 @@ import InputField from "./common/InputField";
 import { v4 } from "uuid";
 import { useImmer } from "use-immer";
 import { useState } from "react";
+import AddButton from "./common/AddButton";
+import DeleteButton from "./common/DeleteButton";
+import SubmitEditButton from "./common/SubmitEditButton";
+import FormSubHeading from "./common/FormSubHeading";
 
 const Education = ({ setResume, isActive, onClick, onClose }) => {
   const [isEdit, setIsEdit] = useState(true);
@@ -31,7 +35,7 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
   };
 
   const addEducation = () => {
-    setEducation((draft) =>
+    setEducation((draft) => {
       draft.push({
         id: v4(),
         school: "",
@@ -39,8 +43,8 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
         startDate: "",
         endDate: "",
         marks: "",
-      })
-    );
+      });
+    });
   };
 
   const deleteEducation = (index) => {
@@ -61,7 +65,10 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
           return (
             <div key={edu.id} className="flex items-end gap-2">
               <div className="grow">
-                <h3>{`Education ${index + 1}`}</h3>
+                <div className="flex justify-between items-center">
+                  <FormSubHeading>{`Education ${index + 1}`}</FormSubHeading>
+                  <DeleteButton onClick={deleteEducation} />
+                </div>
                 <InputField
                   label="School"
                   type="text"
@@ -79,6 +86,15 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
             </div>
           );
         })}
+        {isEdit && (
+          <AddButton onClick={addEducation}>+ Add Education</AddButton>
+        )}
+
+        <SubmitEditButton
+          isEdit={isEdit}
+          onSubmit={submit}
+          onEdit={edit}
+        ></SubmitEditButton>
       </form>
     </Dropdown>
   );

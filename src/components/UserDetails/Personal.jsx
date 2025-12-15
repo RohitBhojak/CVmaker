@@ -1,7 +1,7 @@
 import InputField from "./common/InputField";
 import Dropdown from "./common/Dropdown";
 import { useState } from "react";
-import Button from "../common/Button";
+import SubmitEditButton from "./common/SubmitEditButton";
 import DeleteButton from "./common/DeleteButton";
 import AddButton from "./common/AddButton";
 import { useImmer } from "use-immer";
@@ -107,13 +107,7 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
 
         {isEdit && <AddButton onClick={addLink}>+ Add Link</AddButton>}
 
-        {isEdit ? (
-          <Button onClick={submit}>Submit</Button>
-        ) : (
-          <Button onClick={edit}>
-            <SquarePen /> Edit
-          </Button>
-        )}
+        <SubmitEditButton isEdit={isEdit} onSubmit={submit} onEdit={edit} />
       </form>
     </Dropdown>
   );
