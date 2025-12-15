@@ -1,6 +1,6 @@
 import Preview from "./Preview/Preview.jsx";
 import UserInfo from "./UserDetails/UserInfo.jsx";
-import { Tab } from "./common/Tab.jsx";
+import Tab from "./common/Tab.jsx";
 import { useImmer } from "use-immer";
 import { useState } from "react";
 import { Eye, Pencil } from "lucide-react";
@@ -24,13 +24,13 @@ export default function Main() {
           onClick={() => setActiveTab("editor")}
           isActive={activeTab === "editor"}
         >
-          <Pencil size={16} /> Editor
+          <Pencil size={20} /> Editor
         </Tab>
         <Tab
           onClick={() => setActiveTab("preview")}
           isActive={activeTab === "preview"}
         >
-          <Eye size={16} /> Preview
+          <Eye size={20} /> Preview
         </Tab>
       </div>
 
