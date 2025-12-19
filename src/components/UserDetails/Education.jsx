@@ -67,7 +67,7 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
               <div className="grow">
                 <div className="flex justify-between items-center">
                   <FormSubHeading>{`Education ${index + 1}`}</FormSubHeading>
-                  <DeleteButton onClick={deleteEducation} />
+                  <DeleteButton onClick={() => deleteEducation(index)} />
                 </div>
                 <InputField
                   label="School"
