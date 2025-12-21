@@ -7,7 +7,7 @@ export default function SubmitEditButton({ isEdit, onSubmit, onEdit }) {
         <Button onClick={onSubmit}>Submit</Button>
       ) : (
         <Button onClick={onEdit}>
-          <PencilIcon />
+          <PencilIcon size={20} />
           Edit
         </Button>
       )}

@@ -7,6 +7,7 @@ import AddButton from "./common/AddButton";
 import { useImmer } from "use-immer";
 import { v4 } from "uuid";
 import validate from "../utils/validate";
+import { personalSchema } from "./schema";
 
 const Personal = ({ setResume, isActive, onClick, onClose }) => {
   const [name, setName] = useState("");
@@ -16,17 +17,11 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
   const [isEdit, setIsEdit] = useState(true);
   const [errors, setErrors] = useState({});
 
-  const rules = {
-    name: { required: true, label: "Name" },
-    email: { required: true, label: "Email", pattern: /\S+@\S+\.\S+/ },
-    phone: { required: true, label: "Phone", pattern: /^\d{10}$/ },
-  };
-
   const submit = (e) => {
     e.preventDefault();
 
     const data = { name, email, phone };
-    const newErrors = validate(data, rules);
+    const newErrors = validate(data, personalSchema);
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) {
       return;
@@ -100,7 +95,7 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
 
         {links.map((link, index) => {
           return (
-            <div key={link.id} className="flex items-end gap-2">
+            <div key={link.id} className="flex gap-2">
               <div className="grow">
                 <InputField
                   label={`Link ${index + 1}`}

@@ -1,12 +1,13 @@
 import { ChevronDown } from "lucide-react";
+
 const ArrowButton = ({ onClick, onClose, isActive }) => {
-  return isActive ? (
-    <button onClick={onClose}>
-      <ChevronDown className="rotate-180" />
-    </button>
-  ) : (
-    <button onClick={onClick}>
-      <ChevronDown />
+  return (
+    <button onClick={isActive ? onClose : onClick}>
+      <ChevronDown
+        className={`transition-transform duration-300 ease-in-out ${
+          isActive ? "rotate-180" : ""
+        }`}
+      />
     </button>
   );
 };

@@ -10,7 +10,7 @@ export default function validate(data, rules) {
       }
     }
 
-    if (rule.pattern && !rule.pattern.test(value)) {
+    if (value && rule.pattern && !rule.pattern.test(value)) {
       errors[key] = `Invalid ${rule.label} format`;
     }
   });
