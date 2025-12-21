@@ -5,8 +5,8 @@ import SubmitEditButton from "./common/SubmitEditButton";
 import DeleteButton from "./common/DeleteButton";
 import AddButton from "./common/AddButton";
 import { useImmer } from "use-immer";
-import { Trash2, SquarePen } from "lucide-react";
 import { v4 } from "uuid";
+import validate from "../utils/validate";
 
 const Personal = ({ setResume, isActive, onClick, onClose }) => {
   const [name, setName] = useState("");
@@ -14,17 +14,31 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
   const [phone, setPhone] = useState("");
   const [links, setLinks] = useImmer([{ id: v4(), value: "" }]);
   const [isEdit, setIsEdit] = useState(true);
+  const [errors, setErrors] = useState({});
+
+  const rules = {
+    name: { required: true, label: "Name" },
+    email: { required: true, label: "Email", pattern: /\S+@\S+\.\S+/ },
+    phone: { required: true, label: "Phone", pattern: /^\d{10}$/ },
+  };
 
   const submit = (e) => {
     e.preventDefault();
+
+    const data = { name, email, phone };
+    const newErrors = validate(data, rules);
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
     setResume((draft) => {
       draft.personal = {
-        name,
-        email,
-        phone,
+        ...data,
         links: links.map((link) => link.value),
       };
     });
+
     setIsEdit(false);
   };
 
@@ -58,6 +72,7 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
           type="text"
           id="name"
           isRequired={true}
+          error={errors.name}
           isEdit={isEdit}
           value={name}
           setValue={setName}
@@ -67,6 +82,7 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
           type="email"
           id="email"
           isRequired={true}
+          error={errors.email}
           isEdit={isEdit}
           value={email}
           setValue={setEmail}
@@ -76,6 +92,7 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
           type="tel"
           id="phone"
           isRequired={true}
+          error={errors.phone}
           isEdit={isEdit}
           value={phone}
           setValue={setPhone}

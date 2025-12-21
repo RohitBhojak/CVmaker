@@ -6,6 +6,7 @@ export default function InputField({
   id,
   isRequired,
   isEdit,
+  error,
   value,
   setValue,
 }) {
@@ -19,6 +20,7 @@ export default function InputField({
       ) : (
         <p>{value}</p>
       )}
+      {isEdit && error && <ErrorMessage message={error} />}
     </div>
   );
 }
