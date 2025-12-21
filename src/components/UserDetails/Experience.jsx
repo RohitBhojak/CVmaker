@@ -3,7 +3,7 @@ import Dropdown from "./common/Dropdown";
 import { v4 } from "uuid";
 
 const WorkExperience = ({ setResume, isActive, onClick, onClose }) => {
-  const [workExperience, setWorkExperience] = useState([
+  const [experience, setExperience] = useState([
     {
       id: v4(),
       school: "",
@@ -15,7 +15,7 @@ const WorkExperience = ({ setResume, isActive, onClick, onClose }) => {
   ]);
   return (
     <Dropdown
-      heading={"Work Experience Details"}
+      heading={"Experience Details"}
       onClick={onClick}
       onClose={onClose}
       isActive={isActive}

@@ -18,7 +18,7 @@ function ProjectDetails({ name, link, description }) {
     <div className="mb-2">
       <div className="flex justify-between">
         <h3 className="font-bold">{name}</h3>
-        <Link title="GitHub" href={link}></Link>
+        {link && <Link title="GitHub" href={link}></Link>}
       </div>
       <Bullets description={description}></Bullets>
     </div>

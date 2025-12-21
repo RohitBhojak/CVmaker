@@ -3,7 +3,7 @@ import Personal from "./Personal.jsx";
 import Education from "./Education.jsx";
 import Projects from "./Projects.jsx";
 import Skills from "./Skills.jsx";
-import WorkExperience from "./WorkExperience.jsx";
+import Experience from "./Experience.jsx";
 import Achievements from "./Achievements.jsx";
 export default function UserInfo({ setResume }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -34,12 +34,12 @@ export default function UserInfo({ setResume }) {
         onClick={() => setActiveIndex(3)}
         onClose={onClose}
       ></Skills>
-      <WorkExperience
+      <Experience
         setResume={setResume}
         isActive={activeIndex === 4}
         onClick={() => setActiveIndex(4)}
         onClose={onClose}
-      ></WorkExperience>
+      ></Experience>
       <Achievements
         setResume={setResume}
         isActive={activeIndex === 5}
