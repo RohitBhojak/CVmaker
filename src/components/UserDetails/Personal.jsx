@@ -1,59 +1,62 @@
-import InputField from "./common/InputField";
-import Dropdown from "./common/Dropdown";
 import { useState } from "react";
+import { useImmer } from "use-immer";
+import Dropdown from "./common/Dropdown";
 import SubmitEditButton from "./common/SubmitEditButton";
 import DeleteButton from "./common/DeleteButton";
 import AddButton from "./common/AddButton";
-import { useImmer } from "use-immer";
-import { v4 } from "uuid";
 import validate from "../utils/validate";
 import { personalSchema } from "./schema";
+import {
+  createFromTemplate,
+  dynamicFieldHelper,
+  renderFieldFactory,
+} from "../utils/formHelper";
 
 const Personal = ({ setResume, isActive, onClick, onClose }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [links, setLinks] = useImmer([{ id: v4(), value: "" }]);
+  // personal info template
+  const personalTemplate = {
+    name: "",
+    email: "",
+    phone: "",
+  };
+  // link template
+  const linkTemplate = { value: "" };
+
+  // states
+  const [personal, setPersonal] = useImmer({ ...personalTemplate });
+  // initialize with link template
+  const [links, setLinks] = useImmer([createFromTemplate(linkTemplate)]);
   const [isEdit, setIsEdit] = useState(true);
   const [errors, setErrors] = useState({});
 
-  const submit = (e) => {
-    e.preventDefault();
-
-    const data = { name, email, phone };
-    const newErrors = validate(data, personalSchema);
+  // submit handler
+  const handleSubmit = () => {
+    // validate data and set errors
+    const newErrors = validate(personal, personalSchema);
     setErrors(newErrors);
+    // early return if there are errors
     if (Object.keys(newErrors).length > 0) {
       return;
     }
 
+    // update resume if no errors
     setResume((draft) => {
       draft.personal = {
-        ...data,
+        ...personal,
         links: links.map((link) => link.value),
       };
     });
 
+    // set isEdit to false
     setIsEdit(false);
   };
 
-  const edit = (e) => {
-    e.preventDefault();
-    setIsEdit(true);
-  };
+  // instantiate helper functions
+  const { add: addLink, delete: deleteLink } = dynamicFieldHelper(setLinks);
+  const renderField = renderFieldFactory(errors, isEdit, personal, setPersonal);
+  const renderLink = renderFieldFactory(errors, isEdit, links, setLinks);
 
-  const addLink = () => {
-    setLinks((draft) => {
-      draft.push({ id: v4(), value: "" });
-    });
-  };
-
-  const deleteLink = (index) => {
-    setLinks((draft) => {
-      draft.splice(index, 1);
-    });
-  };
-
+  // render
   return (
     <Dropdown
       onClick={onClick}
@@ -62,64 +65,30 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
       heading={"Personal Details"}
     >
       <form>
-        <InputField
-          label="Name"
-          type="text"
-          id="name"
-          isRequired={true}
-          error={errors.name}
-          isEdit={isEdit}
-          value={name}
-          setValue={setName}
-        />
-        <InputField
-          label="Email"
-          type="email"
-          id="email"
-          isRequired={true}
-          error={errors.email}
-          isEdit={isEdit}
-          value={email}
-          setValue={setEmail}
-        />
-        <InputField
-          label="Phone"
-          type="tel"
-          id="phone"
-          isRequired={true}
-          error={errors.phone}
-          isEdit={isEdit}
-          value={phone}
-          setValue={setPhone}
-        />
-
+        {renderField("name", "Name")}
+        {renderField("email", "Email", "email")}
+        {renderField("phone", "Phone", "tel")}
         {links.map((link, index) => {
           return (
             <div key={link.id} className="flex gap-2">
               <div className="grow">
-                <InputField
-                  label={`Link ${index + 1}`}
-                  type="url"
-                  id={link.id}
-                  isRequired={false}
-                  isEdit={isEdit}
-                  value={link.value}
-                  setValue={(value) => {
-                    setLinks((draft) => {
-                      draft.find((l) => l.id === link.id).value = value;
-                    });
-                  }}
-                />
+                {renderLink("value", `Link ${index + 1}`, "url", index, false)}
               </div>
 
               {isEdit && <DeleteButton onClick={() => deleteLink(index)} />}
             </div>
           );
         })}
-
-        {isEdit && <AddButton onClick={addLink}>+ Add Link</AddButton>}
-
-        <SubmitEditButton isEdit={isEdit} onSubmit={submit} onEdit={edit} />
+        {isEdit && (
+          <AddButton onClick={() => addLink(linkTemplate)}>
+            + Add Link
+          </AddButton>
+        )}
+        <SubmitEditButton
+          isEdit={isEdit}
+          onSubmit={handleSubmit}
+          onEdit={() => setIsEdit(true)}
+        />
       </form>
     </Dropdown>
   );
