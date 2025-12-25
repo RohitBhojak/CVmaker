@@ -1,33 +1,38 @@
-import Dropdown from "./common/Dropdown";
-import InputField from "./common/InputField";
-import { v4 } from "uuid";
 import { useImmer } from "use-immer";
 import { useState } from "react";
+import Dropdown from "./common/Dropdown";
 import AddButton from "./common/AddButton";
 import DeleteButton from "./common/DeleteButton";
 import SubmitEditButton from "./common/SubmitEditButton";
 import FormSubHeading from "./common/FormSubHeading";
 import validate from "../utils/validate";
 import { educationSchema } from "./schema";
+import {
+  createFromTemplate,
+  dynamicFieldHelper,
+  renderFieldFactory,
+} from "../utils/formHelper";
 
 const Education = ({ setResume, isActive, onClick, onClose }) => {
+  // template
+  const educationTemplate = {
+    school: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
+    marks: "",
+  };
+
+  // states
   const [isEdit, setIsEdit] = useState(true);
+  const [errors, setErrors] = useState({});
   const [education, setEducation] = useImmer([
-    {
-      id: v4(),
-      school: "",
-      degree: "",
-      startDate: "",
-      endDate: "",
-      marks: "",
-    },
+    createFromTemplate(educationTemplate),
   ]);
 
-  const [errors, setErrors] = useState({});
-
-  const submit = (e) => {
-    e.preventDefault();
-
+  // handlers
+  const submit = () => {
+    // validate data and set errorsq
     const newErrors = {};
     let isValid = true;
 
@@ -42,36 +47,26 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
     setErrors(newErrors);
     if (!isValid) return;
 
+    // update resume if no errors
     setResume((draft) => {
       draft.education = education;
     });
+
+    // set isEdit to false
     setIsEdit(false);
   };
 
-  const edit = (e) => {
-    e.preventDefault();
-    setIsEdit(true);
-  };
+  // instantiate helper functions
+  const { add: addEducation, delete: deleteEducation } =
+    dynamicFieldHelper(setEducation);
+  const renderField = renderFieldFactory(
+    errors,
+    isEdit,
+    education,
+    setEducation
+  );
 
-  const addEducation = () => {
-    setEducation((draft) => {
-      draft.push({
-        id: v4(),
-        school: "",
-        degree: "",
-        startDate: "",
-        endDate: "",
-        marks: "",
-      });
-    });
-  };
-
-  const deleteEducation = (index) => {
-    setEducation((draft) => {
-      draft.splice(index, 1);
-    });
-  };
-
+  // render
   return (
     <Dropdown
       heading={"Education Details"}
@@ -90,93 +85,27 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
                     <DeleteButton onClick={() => deleteEducation(index)} />
                   )}
                 </div>
-                <InputField
-                  label="School"
-                  type="text"
-                  id={`school-${edu.id}`}
-                  isRequired
-                  error={errors[edu.id]?.school}
-                  isEdit={isEdit}
-                  value={edu.school}
-                  setValue={(value) =>
-                    setEducation((draft) => {
-                      draft[index].school = value;
-                    })
-                  }
-                ></InputField>
-
-                <InputField
-                  label="Degree"
-                  type="text"
-                  id={`degree-${edu.id}`}
-                  isRequired
-                  error={errors[edu.id]?.degree}
-                  isEdit={isEdit}
-                  value={edu.degree}
-                  setValue={(value) =>
-                    setEducation((draft) => {
-                      draft[index].degree = value;
-                    })
-                  }
-                ></InputField>
+                {renderField("school", "School", "text", index)}
+                {renderField("degree", "Degree", "text", index)}
                 <div className="flex gap-2">
-                  <InputField
-                    label="Start Date"
-                    type="month"
-                    id={`startDate-${edu.id}`}
-                    isRequired
-                    error={errors[edu.id]?.startDate}
-                    isEdit={isEdit}
-                    value={edu.startDate}
-                    setValue={(value) =>
-                      setEducation((draft) => {
-                        draft[index].startDate = value;
-                      })
-                    }
-                  ></InputField>
-
-                  <InputField
-                    label="End Date"
-                    type="month"
-                    id={`endDate-${edu.id}`}
-                    isRequired
-                    error={errors[edu.id]?.endDate}
-                    isEdit={isEdit}
-                    value={edu.endDate}
-                    setValue={(value) =>
-                      setEducation((draft) => {
-                        draft[index].endDate = value;
-                      })
-                    }
-                  ></InputField>
+                  {renderField("startDate", "Start Date", "month", index)}
+                  {renderField("endDate", "End Date", "month", index)}
                 </div>
-
-                <InputField
-                  label="Marks"
-                  type="text"
-                  id={`marks-${edu.id}`}
-                  isRequired
-                  error={errors[edu.id]?.marks}
-                  isEdit={isEdit}
-                  value={edu.marks}
-                  setValue={(value) =>
-                    setEducation((draft) => {
-                      draft[index].marks = value;
-                    })
-                  }
-                ></InputField>
+                {renderField("marks", "Marks", "number", index)}
               </div>
             </div>
           );
         })}
         {isEdit && (
-          <AddButton onClick={addEducation}>+ Add Education</AddButton>
+          <AddButton onClick={() => addEducation(educationTemplate)}>
+            + Add Education
+          </AddButton>
         )}
 
         <SubmitEditButton
           isEdit={isEdit}
           onSubmit={submit}
-          onEdit={edit}
+          onEdit={() => setIsEdit(true)}
         ></SubmitEditButton>
       </form>
     </Dropdown>
