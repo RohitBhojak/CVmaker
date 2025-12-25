@@ -5,12 +5,12 @@ import AddButton from "./common/AddButton";
 import DeleteButton from "./common/DeleteButton";
 import SubmitEditButton from "./common/SubmitEditButton";
 import FormSubHeading from "./common/FormSubHeading";
-import validate from "../utils/validate";
 import { educationSchema } from "./schema";
 import {
   createFromTemplate,
   dynamicFieldHelper,
   renderFieldFactory,
+  handleSubmitFactory,
 } from "../utils/formHelper";
 
 const Education = ({ setResume, isActive, onClick, onClose }) => {
@@ -31,30 +31,14 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
   ]);
 
   // handlers
-  const submit = () => {
-    // validate data and set errorsq
-    const newErrors = {};
-    let isValid = true;
-
-    education.forEach((edu) => {
-      const itemErrors = validate(edu, educationSchema);
-      if (Object.keys(itemErrors).length > 0) {
-        isValid = false;
-        newErrors[edu.id] = itemErrors;
-      }
-    });
-
-    setErrors(newErrors);
-    if (!isValid) return;
-
-    // update resume if no errors
-    setResume((draft) => {
-      draft.education = education;
-    });
-
-    // set isEdit to false
-    setIsEdit(false);
-  };
+  const handleSubmit = handleSubmitFactory(
+    "education",
+    education,
+    educationSchema,
+    setErrors,
+    setResume,
+    setIsEdit
+  );
 
   // instantiate helper functions
   const { add: addEducation, delete: deleteEducation } =
@@ -104,7 +88,7 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
 
         <SubmitEditButton
           isEdit={isEdit}
-          onSubmit={submit}
+          onSubmit={handleSubmit}
           onEdit={() => setIsEdit(true)}
         ></SubmitEditButton>
       </form>

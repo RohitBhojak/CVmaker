@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import InputField from "../UserDetails/common/InputField";
+import validate from "./validate";
 
 // creates a new object with a unique id from a template
 export function createFromTemplate(template) {
@@ -26,7 +27,6 @@ export function dynamicFieldHelper(setState) {
 }
 
 // Factory function to render fields
-
 export function renderFieldFactory(errors, isEdit, state, setState) {
   const handleInputChange = (key, value, index) => {
     setState((draft) => {
@@ -56,5 +56,40 @@ export function renderFieldFactory(errors, isEdit, state, setState) {
         setValue={(val) => handleInputChange(key, val, index)}
       />
     );
+  };
+}
+
+export function handleSubmitFactory(
+  stateName,
+  state,
+  schema,
+  setErrors,
+  setResume,
+  setIsEdit
+) {
+  console.log(state);
+  return () => {
+    // validate data and set errors
+    const newErrors = {};
+    let isValid = true;
+
+    state.forEach((item) => {
+      const itemErrors = validate(item, schema);
+      if (Object.keys(itemErrors).length > 0) {
+        isValid = false;
+        newErrors[item.id] = itemErrors;
+      }
+    });
+
+    setErrors(newErrors);
+    if (!isValid) return;
+
+    // update resume if no errors
+    setResume((draft) => {
+      draft[stateName] = state;
+    });
+
+    // set isEdit to false
+    setIsEdit(false);
   };
 }
