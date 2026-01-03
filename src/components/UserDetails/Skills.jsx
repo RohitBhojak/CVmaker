@@ -8,7 +8,7 @@ import FormSubHeading from "./common/FormSubHeading";
 import { skillsSchema } from "./schema";
 import { createFromTemplate, dynamicFieldHelper, handleSubmitFactory } from "../utils/formHelper";
 import renderFieldFactory from "./common/renderFieldFactory";
-import { Input, TextArea } from "./common/Inputs";
+import { Input } from "./common/Inputs";
 
 const Skills = ({ setResume, isActive, onClick, onClose }) => {
   // template

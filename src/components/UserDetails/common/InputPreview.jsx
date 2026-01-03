@@ -1,9 +1,9 @@
 import Bullets from "../../common/Bullets";
 
-export default function InputPreview({ value }) {
+export default function InputPreview({ children }) {
   return (
-    <p className="border-b border-gray-900 dark:border-gray-200 py-1 px-1 font-medium">
-      {value.includes("\n") ? <Bullets description={value} /> : value || "N/A"}
-    </p>
+    <div className="border-b border-gray-900 dark:border-gray-200 py-1 px-1 font-medium">
+      {children.includes("\n") ? <Bullets description={children} /> : children || "N/A"}
+    </div>
   );
 }

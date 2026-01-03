@@ -30,7 +30,7 @@ export default function renderFieldFactory(errors, isEdit, state, setState) {
             setValue={(val) => handleInputChange(key, val, index)}
           />
         ) : (
-          <InputPreview value={fieldValue} />
+          <InputPreview>{fieldValue}</InputPreview>
         )}
         {isEdit && fieldError && <ErrorMessage message={fieldError} />}
       </div>
