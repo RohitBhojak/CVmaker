@@ -1,6 +1,6 @@
 import Italics from "./common/Italics";
 import Subheading from "./common/Subheading";
-import Bullets from "./common/Bullets";
+import Bullets from "../common/Bullets";
 
 export default function ExperiencePreview({ experience }) {
   return (

@@ -1,4 +1,4 @@
-import Bullets from "../../Preview/common/Bullets";
+import Bullets from "../../common/Bullets";
 
 export default function InputPreview({ value }) {
   return (
