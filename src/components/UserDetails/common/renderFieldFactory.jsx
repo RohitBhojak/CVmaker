@@ -1,4 +1,5 @@
 import ErrorMessage from "./ErrorMessage.jsx";
+import InputPreview from "./InputPreview.jsx";
 // Factory function to create render field function
 export default function renderFieldFactory(errors, isEdit, state, setState) {
   const handleInputChange = (key, value, index) => {
@@ -29,7 +30,7 @@ export default function renderFieldFactory(errors, isEdit, state, setState) {
             setValue={(val) => handleInputChange(key, val, index)}
           />
         ) : (
-          <p>{fieldValue}</p>
+          <InputPreview value={fieldValue} />
         )}
         {isEdit && fieldError && <ErrorMessage message={fieldError} />}
       </div>
