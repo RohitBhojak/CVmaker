@@ -18,6 +18,7 @@ export function TextArea({ id, isRequired, value, setValue }) {
       placeholder="Use new line (Enter) for bullet points"
       value={value}
       id={id}
+      rows={3}
       required={isRequired}
       onChange={(e) => setValue(e.target.value)}
     />
