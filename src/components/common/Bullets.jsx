@@ -1,8 +1,11 @@
 export default function Bullets({ description }) {
   const list = [];
-  description.split("\n").map((item, index) => {
-    list.push([index, item]);
-  });
+  description
+    .trim()
+    .split("\n")
+    .map((item, index) => {
+      list.push([index, item]);
+    });
   return (
     <ul className="ml-5">
       {list.map((item) => (

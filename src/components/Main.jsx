@@ -20,16 +20,10 @@ export default function Main() {
   return (
     <main className="flex-1 p-5 flex flex-col h-full lg:overflow-hidden relative">
       <div className="lg:hidden flex bg-gray-200 dark:bg-gray-700 p-1 rounded-lg mb-4 shrink-0">
-        <Tab
-          onClick={() => setActiveTab("editor")}
-          isActive={activeTab === "editor"}
-        >
+        <Tab onClick={() => setActiveTab("editor")} isActive={activeTab === "editor"}>
           <Pencil size={20} /> Editor
         </Tab>
-        <Tab
-          onClick={() => setActiveTab("preview")}
-          isActive={activeTab === "preview"}
-        >
+        <Tab onClick={() => setActiveTab("preview")} isActive={activeTab === "preview"}>
           <Eye size={20} /> Preview
         </Tab>
       </div>

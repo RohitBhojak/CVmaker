@@ -4,7 +4,7 @@ export default function AchievementsPreview({ achievements }) {
   return (
     <div>
       <Subheading>Achievements</Subheading>
-      <Bullets description={achievements}></Bullets>
+      <Bullets description={achievements.description}></Bullets>
     </div>
   );
 }

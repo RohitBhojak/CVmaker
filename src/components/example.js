@@ -61,10 +61,12 @@ const example = {
       description: "HTML, CSS, React, Tailwind, Git, Bash, Webpack, Jest",
     },
   ],
-  achievements:
-    "Solved 650+ problems on LeetCode across data structures and algorithms.\n\
+  achievements: {
+    description:
+      "Solved 650+ problems on LeetCode across data structures and algorithms.\n\
   Achieved a LeetCode Rating of 1700+, ranked in the top 10% globally.\n\
   Secured a highest contest rank of 1888 in LeetCode Weekly/Global contests.",
+  },
   experience: [
     {
       title: "Frontend Developer Intern",

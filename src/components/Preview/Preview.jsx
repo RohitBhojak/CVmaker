@@ -26,7 +26,7 @@ export default function Preview({ resume }) {
           <ProjectsPreview projects={resume.projects}></ProjectsPreview>
         )}
         {resume.skills.length > 0 && <SkillsPreview skills={resume.skills}></SkillsPreview>}
-        {resume.achievements.length > 0 && (
+        {resume.achievements.description?.trim().length > 0 && (
           <AchievementsPreview achievements={resume.achievements}></AchievementsPreview>
         )}
       </div>
