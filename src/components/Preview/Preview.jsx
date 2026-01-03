@@ -12,10 +12,7 @@ export default function Preview({ resume }) {
   const { toPDF, targetRef } = usePDF();
   return (
     <div>
-      <div
-        ref={targetRef}
-        className="flex flex-col gap-5 bg-gray-50 rounded-lg p-5 mb-4"
-      >
+      <div ref={targetRef} className="flex flex-col gap-5 bg-gray-50 rounded-lg p-5 mb-4">
         {Object.keys(resume.personal).length > 0 && (
           <PersonalPreview personal={resume.personal}></PersonalPreview>
         )}
@@ -28,13 +25,9 @@ export default function Preview({ resume }) {
         {resume.projects.length > 0 && (
           <ProjectsPreview projects={resume.projects}></ProjectsPreview>
         )}
-        {resume.skills.length > 0 && (
-          <SkillsPreview skills={resume.skills}></SkillsPreview>
-        )}
+        {resume.skills.length > 0 && <SkillsPreview skills={resume.skills}></SkillsPreview>}
         {resume.achievements.length > 0 && (
-          <AchievementsPreview
-            achievements={resume.achievements}
-          ></AchievementsPreview>
+          <AchievementsPreview achievements={resume.achievements}></AchievementsPreview>
         )}
       </div>
       <Button onClick={() => toPDF()}>

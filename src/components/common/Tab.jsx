@@ -1,4 +1,4 @@
-const Tab = ({ onClick, isActive, children }) => {
+export default function Tab({ onClick, isActive, children }) {
   return (
     <button
       onClick={onClick}
@@ -11,6 +11,4 @@ const Tab = ({ onClick, isActive, children }) => {
       {children}
     </button>
   );
-};
-
-export default Tab;
+}

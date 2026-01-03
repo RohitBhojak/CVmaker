@@ -11,11 +11,7 @@ export default function PersonalPreview({ personal }) {
             link.length > 0 && (
               <Fragment key={link}>
                 <Divider />
-                <Link
-                  title={link}
-                  href={"https://" + link}
-                  target={"_blank"}
-                ></Link>
+                <Link title={link} href={"https://" + link} target={"_blank"}></Link>
               </Fragment>
             )
         )}

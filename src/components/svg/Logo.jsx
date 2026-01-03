@@ -13,11 +13,7 @@ export default function Logo({ className, height = 50, width = 50 }) {
           d="M11.185 1H4.5A1.5 1.5 0 0 0 3 2.5v15A1.5 1.5 0 0 0 4.5 19h11a1.5 1.5 0 0 0 1.5-1.5V7.202a1.5 1.5 0 0 0-.395-1.014l-4.314-4.702A1.5 1.5 0 0 0 11.185 1ZM4 2.5a.5.5 0 0 1 .5-.5h6.685a.5.5 0 0 1 .369.162l4.314 4.702a.5.5 0 0 1 .132.338V17.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-15Z"
           clip-rule="evenodd"
         />
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M11.5 2.1v4.7h4.7"
-        />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.5 2.1v4.7h4.7" />
         <path d="M8.134 6.133a1.067 1.067 0 1 0 0-2.133a1.067 1.067 0 0 0 0 2.133Z" />
         <path
           fill-rule="evenodd"

@@ -6,11 +6,9 @@ import DeleteButton from "./common/DeleteButton";
 import AddButton from "./common/AddButton";
 import validate from "../utils/validate";
 import { personalSchema } from "./schema";
-import {
-  createFromTemplate,
-  dynamicFieldHelper,
-  renderFieldFactory,
-} from "../utils/formHelper";
+import { Input } from "./common/Inputs";
+import { createFromTemplate, dynamicFieldHelper } from "../utils/formHelper";
+import renderFieldFactory from "./common/renderFieldFactory";
 
 const Personal = ({ setResume, isActive, onClick, onClose }) => {
   // personal info template
@@ -58,37 +56,24 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
 
   // render
   return (
-    <Dropdown
-      onClick={onClick}
-      onClose={onClose}
-      isActive={isActive}
-      heading={"Personal Details"}
-    >
+    <Dropdown onClick={onClick} onClose={onClose} isActive={isActive} heading={"Personal Details"}>
       <form>
-        {renderField("name", "Name")}
-        {renderField("email", "Email", "email")}
-        {renderField("phone", "Phone", "tel")}
+        {renderField(Input, "name", "Name")}
+        {renderField(Input, "email", "Email", "email")}
+        {renderField(Input, "phone", "Phone", "tel")}
         {links.map((link, index) => {
           return (
             <div key={link.id} className="flex gap-2">
               <div className="grow">
-                {renderLink("value", `Link ${index + 1}`, "url", index, false)}
+                {renderLink(Input, "value", `Link ${index + 1}`, "url", index, false)}
               </div>
 
               {isEdit && <DeleteButton onClick={() => deleteLink(index)} />}
             </div>
           );
         })}
-        {isEdit && (
-          <AddButton onClick={() => addLink(linkTemplate)}>
-            + Add Link
-          </AddButton>
-        )}
-        <SubmitEditButton
-          isEdit={isEdit}
-          onSubmit={handleSubmit}
-          onEdit={() => setIsEdit(true)}
-        />
+        {isEdit && <AddButton onClick={() => addLink(linkTemplate)}>+ Add Link</AddButton>}
+        <SubmitEditButton isEdit={isEdit} onSubmit={handleSubmit} onEdit={() => setIsEdit(true)} />
       </form>
     </Dropdown>
   );

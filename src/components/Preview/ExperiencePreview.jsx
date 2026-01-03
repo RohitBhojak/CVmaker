@@ -13,13 +13,7 @@ export default function ExperiencePreview({ experience }) {
   );
 }
 
-function ExperienceDetails({
-  title,
-  company,
-  startDate,
-  endDate,
-  description,
-}) {
+function ExperienceDetails({ title, company, startDate, endDate, description }) {
   return (
     <div className="mb-2">
       <div className="flex justify-between">

@@ -6,12 +6,9 @@ import DeleteButton from "./common/DeleteButton";
 import SubmitEditButton from "./common/SubmitEditButton";
 import FormSubHeading from "./common/FormSubHeading";
 import { educationSchema } from "./schema";
-import {
-  createFromTemplate,
-  dynamicFieldHelper,
-  renderFieldFactory,
-  handleSubmitFactory,
-} from "../utils/formHelper";
+import { createFromTemplate, dynamicFieldHelper, handleSubmitFactory } from "../utils/formHelper";
+import renderFieldFactory from "./common/renderFieldFactory";
+import { Input } from "./common/Inputs";
 
 const Education = ({ setResume, isActive, onClick, onClose }) => {
   // template
@@ -26,11 +23,13 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
   // states
   const [isEdit, setIsEdit] = useState(true);
   const [errors, setErrors] = useState({});
-  const [education, setEducation] = useImmer([
-    createFromTemplate(educationTemplate),
-  ]);
+  const [education, setEducation] = useImmer([createFromTemplate(educationTemplate)]);
 
-  // handlers
+  // instantiate helper functions
+  const { add: addEducation, delete: deleteEducation } = dynamicFieldHelper(setEducation);
+
+  const renderField = renderFieldFactory(errors, isEdit, education, setEducation);
+
   const handleSubmit = handleSubmitFactory(
     "education",
     education,
@@ -40,24 +39,9 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
     setIsEdit
   );
 
-  // instantiate helper functions
-  const { add: addEducation, delete: deleteEducation } =
-    dynamicFieldHelper(setEducation);
-  const renderField = renderFieldFactory(
-    errors,
-    isEdit,
-    education,
-    setEducation
-  );
-
   // render
   return (
-    <Dropdown
-      heading={"Education Details"}
-      onClick={onClick}
-      onClose={onClose}
-      isActive={isActive}
-    >
+    <Dropdown heading={"Education Details"} onClick={onClick} onClose={onClose} isActive={isActive}>
       <form>
         {education.map((edu, index) => {
           return (
@@ -65,25 +49,21 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
               <div className="grow">
                 <div className="flex justify-between items-center mb-3">
                   <FormSubHeading>{`Education ${index + 1}`}</FormSubHeading>
-                  {isEdit && (
-                    <DeleteButton onClick={() => deleteEducation(index)} />
-                  )}
+                  {isEdit && <DeleteButton onClick={() => deleteEducation(index)} />}
                 </div>
-                {renderField("school", "School", "text", index)}
-                {renderField("degree", "Degree", "text", index)}
+                {renderField(Input, "school", "School", "text", index)}
+                {renderField(Input, "degree", "Degree", "text", index)}
                 <div className="flex gap-2">
-                  {renderField("startDate", "Start Date", "month", index)}
-                  {renderField("endDate", "End Date", "month", index)}
+                  {renderField(Input, "startDate", "Start Date", "month", index)}
+                  {renderField(Input, "endDate", "End Date", "month", index)}
                 </div>
-                {renderField("marks", "Marks", "number", index)}
+                {renderField(Input, "marks", "Marks", "number", index)}
               </div>
             </div>
           );
         })}
         {isEdit && (
-          <AddButton onClick={() => addEducation(educationTemplate)}>
-            + Add Education
-          </AddButton>
+          <AddButton onClick={() => addEducation(educationTemplate)}>+ Add Education</AddButton>
         )}
 
         <SubmitEditButton

@@ -6,11 +6,11 @@ const WorkExperience = ({ setResume, isActive, onClick, onClose }) => {
   const [experience, setExperience] = useState([
     {
       id: v4(),
-      school: "",
-      degree: "",
+      title: "",
+      company: "",
       startDate: "",
       endDate: "",
-      marks: "",
+      description: "",
     },
   ]);
   return (

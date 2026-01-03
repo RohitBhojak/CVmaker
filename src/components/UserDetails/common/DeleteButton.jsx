@@ -1,5 +1,5 @@
 import { Trash2 } from "lucide-react";
-const DeleteButton = ({ onClick }) => {
+export default function DeleteButton({ onClick }) {
   return (
     <button
       type="button"
@@ -9,6 +9,4 @@ const DeleteButton = ({ onClick }) => {
       <Trash2 size={20} />
     </button>
   );
-};
-
-export default DeleteButton;
+}
