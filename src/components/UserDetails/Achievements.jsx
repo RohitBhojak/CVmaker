@@ -38,7 +38,7 @@ const Achievements = ({ setResume, isActive, onClick, onClose }) => {
       heading={"Achievement Details"}
     >
       <form>
-        {renderField(TextArea, "description", "Description", "text", -1, false)}
+        {renderField(TextArea, "description", "Description", "textArea", -1, false)}
         <SubmitEditButton isEdit={isEdit} onSubmit={handleSubmit} onEdit={() => setIsEdit(true)} />
       </form>
     </Dropdown>
