@@ -30,7 +30,3 @@ export const experienceSchema = {
   endDate: { required: true, label: "End Date" },
   description: { required: true, label: "Description" },
 };
-
-export const achievementsSchema = {
-  description: { required: true, label: "Description" },
-};
