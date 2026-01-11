@@ -31,7 +31,7 @@ const example = {
   projects: [
     {
       name: "Algorithm Visualizer",
-      link: "https://rohitbhojak.github.io/Algorithm-Visualizer/",
+      link: "https://rohitbhojak.github.io/Algorithm-Visualizer",
       description:
         "Developed an interactive web app to visualize sorting and searching algorithms with step-by-step animations.\n\
       Built a custom visualization module to enable easy integration of new algorithms.\n\

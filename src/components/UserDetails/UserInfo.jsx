@@ -22,6 +22,12 @@ export default function UserInfo({ setResume }) {
         onClick={() => setActiveIndex(1)}
         onClose={onClose}
       ></Education>
+      <Experience
+        setResume={setResume}
+        isActive={activeIndex === 4}
+        onClick={() => setActiveIndex(4)}
+        onClose={onClose}
+      ></Experience>
       <Projects
         setResume={setResume}
         isActive={activeIndex === 2}
@@ -34,12 +40,6 @@ export default function UserInfo({ setResume }) {
         onClick={() => setActiveIndex(3)}
         onClose={onClose}
       ></Skills>
-      <Experience
-        setResume={setResume}
-        isActive={activeIndex === 4}
-        onClick={() => setActiveIndex(4)}
-        onClose={onClose}
-      ></Experience>
       <Achievements
         setResume={setResume}
         isActive={activeIndex === 5}

@@ -20,9 +20,6 @@ export default function Preview({ resume }) {
       margin: 15mm;
     }
     @media print {
-      :root {
-        font-size: 11pt;
-      }
       #preview {
         background-color: white;
         padding: 0;
@@ -35,6 +32,9 @@ export default function Preview({ resume }) {
       <div
         ref={contentRef}
         className="lg:overflow-y-auto flex flex-col gap-5 bg-gray-50 rounded-lg p-5 h-full"
+        style={{
+          fontSize: "11pt",
+        }}
         id="preview"
       >
         {Object.keys(resume.personal).length > 0 && (
