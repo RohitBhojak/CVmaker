@@ -4,6 +4,7 @@ import Tab from "./common/Tab.jsx";
 import { useImmer } from "use-immer";
 import { useState } from "react";
 import { Eye, Pencil } from "lucide-react";
+import example from "./example.js";
 
 export default function Main() {
   const [resume, setResume] = useImmer({
@@ -40,9 +41,9 @@ export default function Main() {
         <div
           className={`${
             activeTab === "preview" ? "block" : "hidden"
-          } lg:block h-full bg-gray-100 dark:bg-gray-800 rounded-lg overflow-y-auto`}
+          } lg:block h-full bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden`}
         >
-          <Preview resume={resume} />
+          <Preview resume={example} />
         </div>
       </div>
     </main>

@@ -31,10 +31,10 @@ export default function Preview({ resume }) {
   `,
   });
   return (
-    <div>
+    <div className="h-full flex flex-col">
       <div
         ref={contentRef}
-        className="flex flex-col gap-5 bg-gray-50 rounded-lg p-5 mb-4"
+        className="lg:overflow-y-auto flex flex-col gap-5 bg-gray-50 rounded-lg p-5 h-full"
         id="preview"
       >
         {Object.keys(resume.personal).length > 0 && (
