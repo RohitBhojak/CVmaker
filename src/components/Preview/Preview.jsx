@@ -4,15 +4,39 @@ import ProjectsPreview from "./ProjectsPreview";
 import SkillsPreview from "./SkillsPreview";
 import AchievementsPreview from "./AchievementsPreview";
 import ExperiencePreview from "./ExperiencePreview";
-import { usePDF } from "react-to-pdf";
+import { useReactToPrint } from "react-to-print";
+import { useRef } from "react";
 import { Download } from "lucide-react";
 import Button from "../common/Button";
 
 export default function Preview({ resume }) {
-  const { toPDF, targetRef } = usePDF();
+  const contentRef = useRef(null);
+  const reactToPrintFn = useReactToPrint({
+    contentRef,
+    documentTitle: "resume",
+    pageStyle: `
+    @page {
+      size: A4;
+      margin: 15mm;
+    }
+    @media print {
+      :root {
+        font-size: 11pt;
+      }
+      #preview {
+        background-color: white;
+        padding: 0;
+      }
+    }
+  `,
+  });
   return (
     <div>
-      <div ref={targetRef} className="flex flex-col gap-5 bg-gray-50 rounded-lg p-5 mb-4">
+      <div
+        ref={contentRef}
+        className="flex flex-col gap-5 bg-gray-50 rounded-lg p-5 mb-4"
+        id="preview"
+      >
         {Object.keys(resume.personal).length > 0 && (
           <PersonalPreview personal={resume.personal}></PersonalPreview>
         )}
@@ -30,7 +54,7 @@ export default function Preview({ resume }) {
           <AchievementsPreview achievements={resume.achievements}></AchievementsPreview>
         )}
       </div>
-      <Button onClick={() => toPDF()}>
+      <Button onClick={reactToPrintFn}>
         <Download /> Download
       </Button>
     </div>
