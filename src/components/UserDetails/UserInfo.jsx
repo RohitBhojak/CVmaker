@@ -5,47 +5,44 @@ import Projects from "./Projects.jsx";
 import Skills from "./Skills.jsx";
 import Experience from "./Experience.jsx";
 import Achievements from "./Achievements.jsx";
+import Button from "../common/Button.jsx";
+import { FileText, RotateCcw } from "lucide-react";
+import { formStateFactory } from "../utils/formHelper.js";
+
 export default function UserInfo({ setResume }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const onClose = () => setActiveIndex(-1);
+  const [loadExample, setLoadExample] = useState(false);
+  const [resetForm, setResetForm] = useState(false);
+
+  const handleLoadExample = formStateFactory(setLoadExample);
+  const handleResetForm = formStateFactory(setResetForm);
+
+  const propsFactory = (index) => ({
+    isActive: activeIndex === index,
+    onClick: () => setActiveIndex(index),
+    setResume,
+    onClose,
+    loadExample,
+    resetForm,
+  });
+
   return (
     <div className="lg:overflow-y-auto flex flex-col gap-4 h-full">
-      <Personal
-        setResume={setResume}
-        isActive={activeIndex === 0}
-        onClick={() => setActiveIndex(0)}
-        onClose={onClose}
-      ></Personal>
-      <Education
-        setResume={setResume}
-        isActive={activeIndex === 1}
-        onClick={() => setActiveIndex(1)}
-        onClose={onClose}
-      ></Education>
-      <Experience
-        setResume={setResume}
-        isActive={activeIndex === 4}
-        onClick={() => setActiveIndex(4)}
-        onClose={onClose}
-      ></Experience>
-      <Projects
-        setResume={setResume}
-        isActive={activeIndex === 2}
-        onClick={() => setActiveIndex(2)}
-        onClose={onClose}
-      ></Projects>
-      <Skills
-        setResume={setResume}
-        isActive={activeIndex === 3}
-        onClick={() => setActiveIndex(3)}
-        onClose={onClose}
-      ></Skills>
-      <Achievements
-        setResume={setResume}
-        isActive={activeIndex === 5}
-        onClick={() => setActiveIndex(5)}
-        onClose={onClose}
-      ></Achievements>
+      <Personal {...propsFactory(0)}></Personal>
+      <Education {...propsFactory(1)}></Education>
+      <Experience {...propsFactory(2)}></Experience>
+      <Projects {...propsFactory(3)}></Projects>
+      <Skills {...propsFactory(4)}></Skills>
+      <Achievements {...propsFactory(5)}></Achievements>
+      <div className="mt-auto flex gap-3">
+        <Button onClick={handleLoadExample}>
+          <FileText size={16} /> Load Example
+        </Button>
+        <Button onClick={handleResetForm}>
+          <RotateCcw size={16} /> Reset Form
+        </Button>
+      </div>
     </div>
   );
 }

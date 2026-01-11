@@ -61,7 +61,7 @@ export default function Preview({ resume }) {
   });
 
   return (
-    <div className="h-full flex flex-col bg-gray-100 dark:bg-gray-900">
+    <div className="h-full flex flex-col bg-gray-100 dark:bg-gray-900 gap-3">
       {/* Scrollable Area */}
       <div
         ref={containerRef}

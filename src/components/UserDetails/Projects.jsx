@@ -9,8 +9,10 @@ import { projectsSchema } from "./schema";
 import { createFromTemplate, dynamicFieldHelper, handleSubmitFactory } from "../utils/formHelper";
 import renderFieldFactory from "./common/renderFieldFactory";
 import { Input, TextArea } from "./common/Inputs";
+import example from "../example";
+import { useFormChange } from "../customHooks/useFormChange";
 
-const Projects = ({ setResume, isActive, onClick, onClose }) => {
+const Projects = ({ loadExample, resetForm, setResume, isActive, onClick, onClose }) => {
   // template
   const projectTemplate = {
     name: "",
@@ -23,6 +25,17 @@ const Projects = ({ setResume, isActive, onClick, onClose }) => {
   const [isEdit, setIsEdit] = useState(true);
   const [errors, setErrors] = useState({});
 
+  // effects to load example and reset form
+  useFormChange(
+    "projects",
+    setResume,
+    setProjects,
+    setIsEdit,
+    projectTemplate,
+    loadExample,
+    resetForm,
+    example
+  );
   // instantiate helper functions
   const { add: addProject, delete: deleteProject } = dynamicFieldHelper(setProjects);
 

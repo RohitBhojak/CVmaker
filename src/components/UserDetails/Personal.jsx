@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 import Dropdown from "./common/Dropdown";
 import SubmitEditButton from "./common/SubmitEditButton";
@@ -9,8 +9,9 @@ import { personalSchema } from "./schema";
 import { Input } from "./common/Inputs";
 import { createFromTemplate, dynamicFieldHelper } from "../utils/formHelper";
 import renderFieldFactory from "./common/renderFieldFactory";
+import example from "../example";
 
-const Personal = ({ setResume, isActive, onClick, onClose }) => {
+const Personal = ({ resetForm, loadExample, setResume, isActive, onClick, onClose }) => {
   // personal info template
   const personalTemplate = {
     name: "",
@@ -19,13 +20,40 @@ const Personal = ({ setResume, isActive, onClick, onClose }) => {
   };
   // link template
   const linkTemplate = { value: "" };
-
   // states
   const [personal, setPersonal] = useImmer({ ...personalTemplate });
   // initialize with link template
   const [links, setLinks] = useImmer([createFromTemplate(linkTemplate)]);
   const [isEdit, setIsEdit] = useState(true);
   const [errors, setErrors] = useState({});
+
+  // effects to load example
+  useEffect(() => {
+    if (!loadExample) return;
+    setPersonal({ ...example.personal });
+    setLinks(
+      example.personal.links.map((link) => ({
+        value: link,
+      }))
+    );
+    setResume((draft) => {
+      draft.personal = { ...example.personal };
+    });
+    setIsEdit(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadExample]);
+
+  // effect to reset form
+  useEffect(() => {
+    if (!resetForm) return;
+    setPersonal({ ...personalTemplate });
+    setLinks([createFromTemplate(linkTemplate)]);
+    setResume((draft) => {
+      draft.personal = { ...personalTemplate, links: [] };
+    });
+    setIsEdit(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resetForm]);
 
   // submit handler
   const handleSubmit = () => {

@@ -9,8 +9,10 @@ import { skillsSchema } from "./schema";
 import { createFromTemplate, dynamicFieldHelper, handleSubmitFactory } from "../utils/formHelper";
 import renderFieldFactory from "./common/renderFieldFactory";
 import { Input } from "./common/Inputs";
+import example from "../example";
+import { useFormChange } from "../customHooks/useFormChange";
 
-const Skills = ({ setResume, isActive, onClick, onClose }) => {
+const Skills = ({ loadExample, resetForm, setResume, isActive, onClick, onClose }) => {
   // template
   const skillTemplate = {
     title: "",
@@ -21,6 +23,18 @@ const Skills = ({ setResume, isActive, onClick, onClose }) => {
   const [skills, setSkills] = useImmer([createFromTemplate(skillTemplate)]);
   const [isEdit, setIsEdit] = useState(true);
   const [errors, setErrors] = useState({});
+
+  // effects to load example and reset form
+  useFormChange(
+    "skills",
+    setResume,
+    setSkills,
+    setIsEdit,
+    skillTemplate,
+    loadExample,
+    resetForm,
+    example
+  );
 
   // instantiate helper functions
   const { add: addSkill, delete: deleteSkill } = dynamicFieldHelper(setSkills);

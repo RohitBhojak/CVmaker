@@ -9,8 +9,10 @@ import { educationSchema } from "./schema";
 import { createFromTemplate, dynamicFieldHelper, handleSubmitFactory } from "../utils/formHelper";
 import renderFieldFactory from "./common/renderFieldFactory";
 import { Input } from "./common/Inputs";
+import example from "../example";
+import { useFormChange } from "../customHooks/useFormChange";
 
-const Education = ({ setResume, isActive, onClick, onClose }) => {
+const Education = ({ resetForm, loadExample, setResume, isActive, onClick, onClose }) => {
   // template
   const educationTemplate = {
     school: "",
@@ -24,6 +26,18 @@ const Education = ({ setResume, isActive, onClick, onClose }) => {
   const [isEdit, setIsEdit] = useState(true);
   const [errors, setErrors] = useState({});
   const [education, setEducation] = useImmer([createFromTemplate(educationTemplate)]);
+
+  // effects to load example and reset form
+  useFormChange(
+    "education",
+    setResume,
+    setEducation,
+    setIsEdit,
+    educationTemplate,
+    loadExample,
+    resetForm,
+    example
+  );
 
   // instantiate helper functions
   const { add: addEducation, delete: deleteEducation } = dynamicFieldHelper(setEducation);

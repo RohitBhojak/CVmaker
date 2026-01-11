@@ -52,3 +52,12 @@ export function handleSubmitFactory(stateName, state, schema, setErrors, setResu
     setIsEdit(false);
   };
 }
+
+export function formStateFactory(setState) {
+  return () => {
+    setState(true);
+    setTimeout(() => {
+      setState(false);
+    }, 100);
+  };
+}

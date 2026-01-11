@@ -4,8 +4,10 @@ import Dropdown from "./common/Dropdown";
 import SubmitEditButton from "./common/SubmitEditButton";
 import { TextArea } from "./common/Inputs";
 import renderFieldFactory from "./common/renderFieldFactory";
+import example from "../example";
+import { useFormChange } from "../customHooks/useFormChange";
 
-const Achievements = ({ setResume, isActive, onClick, onClose }) => {
+const Achievements = ({ loadExample, resetForm, setResume, isActive, onClick, onClose }) => {
   // achievement template
   const achievementTemplate = {
     description: "",
@@ -14,6 +16,18 @@ const Achievements = ({ setResume, isActive, onClick, onClose }) => {
   // states
   const [achievements, setAchievements] = useImmer({ ...achievementTemplate });
   const [isEdit, setIsEdit] = useState(true);
+
+  // effects to load example and reset form
+  useFormChange(
+    "achievements",
+    setResume,
+    setAchievements,
+    setIsEdit,
+    achievementTemplate,
+    loadExample,
+    resetForm,
+    example
+  );
 
   // submit handler
   const handleSubmit = () => {

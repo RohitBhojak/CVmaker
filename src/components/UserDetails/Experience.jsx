@@ -9,8 +9,10 @@ import { experienceSchema } from "./schema";
 import { createFromTemplate, dynamicFieldHelper, handleSubmitFactory } from "../utils/formHelper";
 import renderFieldFactory from "./common/renderFieldFactory";
 import { Input, TextArea } from "./common/Inputs";
+import example from "../example";
+import { useFormChange } from "../customHooks/useFormChange";
 
-const Experience = ({ setResume, isActive, onClick, onClose }) => {
+const Experience = ({ loadExample, resetForm, setResume, isActive, onClick, onClose }) => {
   // template
   const experienceTemplate = {
     title: "",
@@ -24,6 +26,18 @@ const Experience = ({ setResume, isActive, onClick, onClose }) => {
   const [experience, setExperience] = useImmer([createFromTemplate(experienceTemplate)]);
   const [isEdit, setIsEdit] = useState(true);
   const [errors, setErrors] = useState({});
+
+  // effects to load example and reset form
+  useFormChange(
+    "experience",
+    setResume,
+    setExperience,
+    setIsEdit,
+    experienceTemplate,
+    loadExample,
+    resetForm,
+    example
+  );
 
   // instantiate helper functions
   const { add: addExperience, delete: deleteExperience } = dynamicFieldHelper(setExperience);

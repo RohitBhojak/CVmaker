@@ -9,7 +9,7 @@ export const educationSchema = {
   degree: { required: true, label: "Degree" },
   startDate: { required: true, label: "Start Date" },
   endDate: { required: true, label: "End Date" },
-  marks: { required: true, label: "Marks", pattern: /^\d+(\.\d+)?$/ },
+  marks: { required: true, label: "Marks", pattern: /^\d+(\.\d+)?%?$/ },
 };
 
 export const projectsSchema = {
