@@ -11,7 +11,7 @@ export default function PersonalPreview({ personal }) {
             link.length > 0 && (
               <Fragment key={link}>
                 <Divider />
-                <Link title={link} href={link}></Link>
+                <Link href={link}></Link>
               </Fragment>
             )
         )}

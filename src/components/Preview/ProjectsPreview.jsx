@@ -1,6 +1,7 @@
 import Link from "./common/Link";
 import Subheading from "./common/Subheading";
 import Bullets from "../common/Bullets";
+import Italics from "./common/Italics";
 
 export default function ProjectsPreview({ projects }) {
   return (
@@ -18,7 +19,11 @@ function ProjectDetails({ name, link, description }) {
     <div className="mb-2">
       <div className="flex justify-between">
         <h3 className="font-bold">{name}</h3>
-        {link && <Link title="GitHub" href={link}></Link>}
+        {link && (
+          <Italics>
+            <Link href={link}></Link>
+          </Italics>
+        )}
       </div>
       <Bullets description={description}></Bullets>
     </div>
