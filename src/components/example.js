@@ -3,7 +3,10 @@ const example = {
     name: "Rohit Singh Bhojak",
     email: "rohitbhojak99@gmail.com",
     phone: "8882329599",
-    links: ["github.com/RohitBhojak", "linkedin.com/in/rohit-bhojak"],
+    links: [
+      { id: 1, value: "github.com/RohitBhojak" },
+      { id: 2, value: "linkedin.com/in/rohit-bhojak" },
+    ],
   },
   education: [
     {

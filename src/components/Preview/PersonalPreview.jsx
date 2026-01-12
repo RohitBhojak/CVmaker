@@ -12,10 +12,10 @@ export default function PersonalPreview({ personal }) {
         )}
         {personal.links.map(
           (link) =>
-            link.length > 0 && (
-              <Fragment key={link}>
+            link.value.length > 0 && (
+              <Fragment key={link.id}>
                 <Divider />
-                <Link href={link}></Link>
+                <Link href={link.value}></Link>
               </Fragment>
             )
         )}

@@ -30,12 +30,8 @@ const Personal = ({ resetForm, loadExample, setResume, isActive, onClick, onClos
   // effects to load example
   useEffect(() => {
     if (!loadExample) return;
-    setPersonal({ ...example.personal });
-    setLinks(
-      example.personal.links.map((link) => ({
-        value: link,
-      }))
-    );
+    setPersonal(example.personal);
+    setLinks(example.personal.links);
     setResume((draft) => {
       draft.personal = { ...example.personal };
     });
@@ -69,7 +65,7 @@ const Personal = ({ resetForm, loadExample, setResume, isActive, onClick, onClos
     setResume((draft) => {
       draft.personal = {
         ...personal,
-        links: links.map((link) => link.value),
+        links: links,
       };
     });
 
