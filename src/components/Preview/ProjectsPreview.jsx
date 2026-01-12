@@ -8,7 +8,7 @@ export default function ProjectsPreview({ projects }) {
     <div>
       <Subheading>Projects</Subheading>
       {projects.map((project) => (
-        <ProjectDetails key={project.name} {...project}></ProjectDetails>
+        <ProjectDetails key={project.id} {...project}></ProjectDetails>
       ))}
     </div>
   );

@@ -4,7 +4,7 @@ export default function SkillsPreview({ skills }) {
     <div>
       <Subheading>Skills</Subheading>
       {skills.map((skill) => (
-        <SkillsDetails key={skill.title} {...skill}></SkillsDetails>
+        <SkillsDetails key={skill.id} {...skill}></SkillsDetails>
       ))}
     </div>
   );

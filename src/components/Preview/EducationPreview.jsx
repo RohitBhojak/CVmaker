@@ -6,7 +6,7 @@ export default function EducationPreview({ education }) {
     <div>
       <Subheading>Education</Subheading>
       {education.map((edu) => (
-        <EducationDetails key={edu.degree} {...edu}></EducationDetails>
+        <EducationDetails key={edu.id} {...edu}></EducationDetails>
       ))}
     </div>
   );

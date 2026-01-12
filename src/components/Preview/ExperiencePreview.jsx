@@ -8,7 +8,7 @@ export default function ExperiencePreview({ experience }) {
     <div>
       <Subheading>Experience</Subheading>
       {experience.map((exp) => (
-        <ExperienceDetails key={exp.title} {...exp}></ExperienceDetails>
+        <ExperienceDetails key={exp.id} {...exp}></ExperienceDetails>
       ))}
     </div>
   );
