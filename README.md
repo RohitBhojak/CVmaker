@@ -1,6 +1,6 @@
 # [CVmaker: ATS-Optimized Resume Builder](https://cv-maker-gray.vercel.app/)
 
-![CVmaker Preview](./assets/preview.png)
+![CVmaker Preview](./src/assets/preview.png)
 
 > **Live Link:** [https://cv-maker-gray.vercel.app/](https://cv-maker-gray.vercel.app/)
 
