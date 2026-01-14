@@ -13,24 +13,24 @@ const example = {
       id: 1,
       school: "GCET, AKTU",
       degree: "B.Tech, Computer Science and Design",
-      startDate: "2022-09",
-      endDate: "2026-05",
+      startDate: "2022-11",
+      endDate: "2026-06",
       marks: "8.04",
     },
     {
       id: 2,
       school: "CBSE",
       degree: "Intermediate",
-      startDate: "2020-09",
-      endDate: "2021-05",
+      startDate: "2020-05",
+      endDate: "2021-07",
       marks: "95.0%",
     },
     {
       id: 3,
       school: "CBSE",
       degree: "High School",
-      startDate: "2018-09",
-      endDate: "2019-05",
+      startDate: "2018-05",
+      endDate: "2019-06",
       marks: "95.2%",
     },
   ],
@@ -58,17 +58,21 @@ const example = {
     },
   ],
   skills: [
-    { id: 1, title: "Languages", description: "Java, JavaScript, SQL, C/C++, Python" },
+    {
+      id: 1,
+      title: "Languages",
+      description: "Java, JavaScript, SQL, C/C++, Python",
+    },
     {
       id: 2,
-      title: "Development",
-      description: "HTML, CSS, React, Tailwind, Git, Bash, Webpack, Jest",
+      title: "Technologies",
+      description: "React.js, Vite, Tailwind CSS, HTML5, CSS3, Git, Webpack, Jest",
     },
   ],
   achievements: {
     id: 1,
     description:
-      "Solved 650+ problems on LeetCode across data structures and algorithms.\nAchieved a LeetCode Rating of 1700+, ranked in the top 10% globally.\nSecured a highest contest rank of 1888 in LeetCode Weekly/Global contests.",
+      "Solved 700+ problems on LeetCode across data structures and algorithms.\nAchieved a LeetCode Rating of 1800+, ranked in the top 7% globally.\nSecured a highest contest rank of 1888 in LeetCode Weekly/Global contests.",
   },
   experience: [
     {

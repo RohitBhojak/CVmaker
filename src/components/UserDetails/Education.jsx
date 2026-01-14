@@ -71,7 +71,7 @@ const Education = ({ resetForm, loadExample, setResume, isActive, onClick, onClo
                   {renderField(Input, "startDate", "Start Date", "month", index)}
                   {renderField(Input, "endDate", "End Date", "month", index)}
                 </div>
-                {renderField(Input, "marks", "Marks", "number", index)}
+                {renderField(Input, "marks", "Marks", "text", index)}
               </div>
             </div>
           );
