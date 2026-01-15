@@ -82,7 +82,7 @@ const example = {
       startDate: "2025-11",
       endDate: "2026-02",
       description:
-        "Working on a React codebase for a large-scale health insurance web platform under development.\nResolve UI/UX issues and functional bugs reported by testers and clients, improving usability and reliability.\nRefactor existing components to make them more maintainable, extensible, and efficient.",
+        "Working on a React codebase for a large-scale health insurance web platform under development.\nResolve UI/UX issues and functional bugs reported by testers and clients, improving usability and reliability.\nRefactor existing components to make them more maintainable, extensible, and efficient.\nCollaborated with backend teams to integrate RESTful APIs, ensuring seamless data flow and dynamic UI updates.",
     },
   ],
 };

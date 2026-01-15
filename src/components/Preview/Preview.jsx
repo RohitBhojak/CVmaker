@@ -82,7 +82,7 @@ export default function Preview({ resume }) {
               minHeight: "297mm",
               transform: `scale(${dimensions.scale})`,
               transformOrigin: "top left",
-              fontSize: "11pt",
+              fontSize: "10.5pt",
             }}
             className="bg-gray-50 flex flex-col gap-5 p-[15mm]"
           >
